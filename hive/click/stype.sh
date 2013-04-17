@@ -1,0 +1,4 @@
+hadoop fs -rmr /user/yunfeng.ma/Edm/xntalk/jicheng/exposure/hivetest/$1
+path="/tmp/zhen.deng"
+hadoop jar /opt/hadoop-0.21.0/mapred/contrib/streaming/hadoop-0.21.0-streaming.jar  -D stream.reduce.output.field.separator=?    -DnumReduceTasks=10    -lazyOutput -input /user/yunfeng.ma/Edm/xntalk/jicheng/exposure/test/testlog  -output /user/yunfeng.ma/Edm/xntalk/jicheng/exposure/hivetest/$1 -mapper ${path}/StypeMapper.py -reducer ${path}/StypeReduce.py  -file ${path}/StypeMapper.py -file ${path}/StypeReduce.py
+#hadoop jar /opt/hadoop-0.21.0/mapred/contrib/streaming/hadoop-0.21.0-streaming.jar  -DnumReduceTasks=0  -input /log_in/active_track/access/2012/access.$1.*  -output /user/yunfeng.ma/Edm/xntalk/jicheng/exposure/hivetest/$1 -mapper ${path}/StypeMapper.py -reducer ${path}/StypeReduce.py  -file ${path}/StypeMapper.py -file ${path}/StypeReduce.py

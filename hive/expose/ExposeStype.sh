@@ -1,0 +1,3 @@
+hadoop dfs -rmr /user/yunfeng.ma/Edm/xntalk/jicheng/Expose/$1
+path="/tmp/feed/expose"
+hadoop jar /opt/hadoop-0.21.0/mapred/contrib/streaming/hadoop-0.21.0-streaming.jar -jobconf mapred.map.tasks=30 -jobconf mapred.reduce.tasks=0  -input /log_in/business/feed/stat.$1.* -input /log_in/business/feed/favorite.$1.* -input /log_in/business/feed/hot.$1.* -input /log_in/business/feed/retrieve.$1.*  -input /log_in/business/feed/retrieve.$1.* -output /user/yunfeng.ma/Edm/xntalk/jicheng/Expose/$1 -mapper ${path}/ExposeStypeMapper.py -reducer ${path}/ExposeStypeReduce.py  -file ${path}/ExposeStypeMapper.py -file ${path}/ExposeStypeReduce.py
